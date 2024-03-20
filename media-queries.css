@@ -1,0 +1,16 @@
+@media only screen and (min-width: 768px) {
+    .top-content img {
+        margin-top: 10px;
+        width:168px;
+        height:168px;
+    }
+
+    .middle-content {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .middle-content .left-side {
+        width: 40%;
+    }
+}
