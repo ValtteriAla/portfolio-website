@@ -1,0 +1,39 @@
+
+.content-wrapper {
+    padding: 10px
+}
+.content-wrapper summary {
+    list-style-type: none;
+}
+
+.blog-post {
+    display:flex;
+    border: 1px solid rgb(58, 45, 45);
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5%
+}
+
+.post-header {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+}
+
+
+.post-info {
+    width: 100%;
+    text-align: center;
+}
+
+.post-content {
+    border-left: 1px solid rgb(58, 45, 45);
+    border-bottom: 1px solid rgb(58, 45, 45);
+    border-right: 1px solid rgb(58, 45, 45);
+    border-radius: 10px;
+    padding: 10px;
+    justify-content: center;
+    min-height: 60px;
+}

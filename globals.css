@@ -17,11 +17,13 @@ p {
     padding: 16px;
     display: flex;
     justify-content: space-between;
+    height:40px;
 }
 
 .top-nav .links {
     display:flex;
     column-gap: 10px;
+    display:none;
 }
 .top-nav .links a {
     font-size: large;
@@ -37,6 +39,8 @@ p {
     text-shadow: .05em 0px black;
     margin:0;
 }
+
+
 
 .sidebar summary {
     list-style-type: none;
@@ -54,11 +58,10 @@ p {
     row-gap: 16px;
     position: absolute;
     left: 0;
-    top: 61px;
+    top: 70px;
     padding: 20px;
     width: 50px;
-    height: 83%;
-    border-right: 1px solid black;
+    height: 100%;
     background: gainsboro;
 }
 
