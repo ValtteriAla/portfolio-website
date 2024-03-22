@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+}
+
+
+h1 {
+    font-size: 28px
+}
+
+p {
+    font-size: large;
+}
+
+
+.top-nav {
+    background: gainsboro;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    height:40px;
+}
+
+.top-nav .links {
+    display:flex;
+    column-gap: 10px;
+    display:none;
+}
+.top-nav .links a {
+    font-size: large;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.top-nav .links a.active {
+    background: lightgray;
+    text-shadow: .05em 0px black;
+    margin:0;
+}
+
+
+
+.sidebar summary {
+    list-style-type: none;
+    font-weight: bold;
+    line-height: 0px;
+    font-size: xx-large;
+}
+.sidebar summary .hamburger {
+    margin-top: 5px;
+}
+
+.sidebar .sidebar-content {
+    display:flex;
+    flex-direction: column;
+    row-gap: 16px;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    padding: 20px;
+    width: 50px;
+    height: 100%;
+    background: gainsboro;
+}
+
+.sidebar a.active {
+    font-weight: bold;
+}
+
+
+blockquote {
+    font: 14px/22px normal helvetica, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
+    background: rgba(236, 236, 236, 0.799);
+  } 
+

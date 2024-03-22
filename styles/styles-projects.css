@@ -1,0 +1,19 @@
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.project-cards .card {
+    width: 100%;
+    padding: 0px 10px 10px 10px;
+    background: lightblue;
+    margin: 10px;
+    border: 1px solid lightblue;
+    border-radius: 10px
+}
+
+.project-cards .card h2 {
+    text-align: center;
+}
