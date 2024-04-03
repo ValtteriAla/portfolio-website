@@ -1,8 +1,35 @@
-
-.top-content {
-    display: flex;
-    justify-content: space-evenly;
+body {
+    display:grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
+
+.top-nav {
+    display: grid;
+    grid-column: 1/12;
+    grid-row: 1;
+    grid-template-columns: subgrid;
+}
+
+.top-nav .links {
+    grid-column: 5/10;
+    grid-row: 1;
+
+}
+
+.content-wrapper {
+    grid-column: 1/12;
+    grid-row: 2
+}
+
+footer {
+    grid-column: 1/12;
+    grid-row: 4;
+    background: lightgray;
+    width: 100%;
+}
+
 
 .top-content img {
     margin-top: 10px;
