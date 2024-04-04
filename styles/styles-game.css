@@ -25,6 +25,10 @@
   border-collapse: collapse;
 }
 
+#start-game-btn {
+  padding: 8px;
+}
+
 .col button {
     height:100%;
     width:100%;

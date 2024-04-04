@@ -11,9 +11,21 @@
     background: lightblue;
     margin: 10px;
     border: 1px solid lightblue;
-    border-radius: 10px
+    border-radius: 10px;
+    text-decoration: none;
+    color:black;
 }
 
+.project-cards .card:hover {
+    opacity: 0.8;
+}
 .project-cards .card h2 {
     text-align: center;
+}
+
+
+.project-cards .card .card-link {
+    height: 100%;
+    width: 100%;
+    display: inline-block
 }

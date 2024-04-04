@@ -63,9 +63,15 @@ p {
     left: 0;
     top: 70px;
     padding: 20px;
-    width: 50px;
+    width: 80px;
     height: 100%;
     background: gainsboro;
+}
+
+.sidebar .sidebar-content ul {
+    margin:0;
+    padding-left:20px;
+    font-size: small;
 }
 
 .sidebar a.active {
