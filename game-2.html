@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
+    <title>Game 2</title>
     <link rel="stylesheet" href="./styles/globals.css">
     <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/styles-game.css">
+    <link rel="stylesheet" href="./styles/styles-game-2.css">
     <link rel="stylesheet" href="./styles/media-queries.css">
 
 </head>
@@ -30,14 +30,23 @@
                 </summary>
                 <div class="sidebar-content">
                     <a href="/portfolio-website/index.html">CV</a>
-                    <a class="active" href="/portfolio-website/blog.html">Blog</a>
+                    <a href="/portfolio-website/blog.html">Blog</a>
                     <a href="/portfolio-website/projects.html">Projects</a>
+                    <ul>
+                        <li>
+                            <a href="/portfolio-website/game-1.html">Game 1</a>
+                        </li>
+                        <li>
+                            <a class="active" href="/portfolio-website/game-2.html">Game 2</a>
+                        </li>
+                    </ul>
+
                 </div>
             </details>
         </div>
         <div class="links">
             <a href="/portfolio-website/index.html">CV</a>
-            <a class="active" href="/portfolio-website/blog.html">Blog</a>
+            <a href="/portfolio-website/blog.html">Blog</a>
             <a href="/portfolio-website/projects.html">Projects</a>
         </div>
         <div class="other">
@@ -46,8 +55,13 @@
 
 
     <div class="content-wrapper">
-        <div id="game-board" class="game-board">
+        <div class="top-content">
+            <button id="start-game-btn">Start Game</button>
+            <button id="hint-btn">Hint</button>
+        </div>
 
+        <div id="game-board" class="game-board">
+            <div id="player">P</div>
         </div>
 
     </div>
@@ -56,7 +70,7 @@
     <footer>
     </footer>
 
-    <script src="scripts/game.js"></script>
+    <script src="scripts/game-2.js"></script>
 </body>
 
 </html>
