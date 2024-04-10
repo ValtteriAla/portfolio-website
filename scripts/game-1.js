@@ -2,14 +2,18 @@
  TODO:
  - scoreboard
  - player can choose board dimensions, difficulty (speed), and the game ending length
- 
+ - Game end mechanics
+   - Player looses heart or looses whole game if clicks wrong tile
+   - Do the whole board reset if player clicks wrong tile
 */
 
 const game_board = document.getElementById("game-board");
 const start_game_btn = document.getElementById("start-game-btn");
 const hint_btn = document.getElementById("hint-btn");
-const max_width_height = 10; // make dynamic, init when initing the board and get the dimensions
-let buttons_disabled = true
+const round_label = document.getElementById("round-value");
+const max_width_height = 5; // make dynamic, init when initing the board and get the dimensions
+let buttons_disabled = true;
+let current_round = 1;
 
 const patterns = [
   [get_random_int(max_width_height), get_random_int(max_width_height)],
@@ -26,7 +30,6 @@ function get_random_int(max) {
 
 function on_click_start_game_btn(e) {
   e.target.setAttribute("disabled", "true");
-  console.log("Starting the game.", e);
 
   flashCells(patterns).then(() => {
     enable_buttons();
@@ -36,18 +39,16 @@ function on_click_start_game_btn(e) {
 function on_click_hint_btn(e) {
   //e.target.setAttribute("disabled", "true");
 
-  flash_cell(patterns[current_index][0], patterns[current_index][1], "yellow")
+  flash_cell(patterns[current_index][0], patterns[current_index][1], "yellow");
 }
 
 function disable_buttons() {
-  console.log("disabled buttons")
-  buttons_disabled = true
+  buttons_disabled = true;
 }
 
 function enable_buttons() {
-  console.log("Enabled buttons")
-  buttons_disabled = false
- /* Some cases did not work properly (still allows click to happen)
+  buttons_disabled = false;
+  /* Some cases did not work properly (still allows click to happen)
   const buttons = document.getElementsByClassName("col-btn");
 
   for (let button of buttons) {
@@ -58,9 +59,8 @@ function enable_buttons() {
 
 function init_board(board) {
   // Create rows
-  console.log("init_board");
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     const row_div = document.createElement("div");
     row_div.setAttribute("class", `row row-${i}`);
     row_div.setAttribute("id", `row-${i}`);
@@ -71,7 +71,7 @@ function init_board(board) {
 
   let row_index = 0;
   for (const child of board.children) {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       const col_div = document.createElement("div");
       const col_btn = document.createElement("button");
       col_btn.addEventListener("click", on_click_col_btn);
@@ -85,9 +85,10 @@ function init_board(board) {
   }
 }
 
-function on_click_col_btn(e) {
+async function on_click_col_btn(e) {
+  console.log("CLICKED COL BTN");
 
-  if (buttons_disabled) return
+  if (buttons_disabled) return;
 
   const parent = e.target.parentElement;
 
@@ -98,25 +99,35 @@ function on_click_col_btn(e) {
     parsed_id[0] == patterns[current_index][0] &&
     parsed_id[1] == patterns[current_index][1]
   ) {
-    current_index += 1;
     if (current_index == patterns.length) {
-      disable_buttons()
+      disable_buttons();
     }
 
-    flash_cell(parsed_id[0], parsed_id[1]).then(() => {
-      if (current_index == patterns.length) {
-        sleep(1).then(() => {
+    current_index += 1;
+    // local scoped index for the await function
+    const local_current_index = current_index
+
+    await flash_cell(parsed_id[0], parsed_id[1]).then(async () => {
+      if (local_current_index == patterns.length) {
+        await sleep(1).then(() => {
+          console.log("This comes first the comment");
           start_next_round();
         });
       }
     });
+    console.log("FLASHED CELLS");
   } else {
-    console.log("WRONG TILE")
     flash_cell(parsed_id[0], parsed_id[1], "red");
   }
 }
 
+function change_round_label(value) {
+  round_label.innerHTML = value;
+}
+
 function start_next_round() {
+  current_round += 1;
+  change_round_label(current_round);
   console.log("STARTING NEXT ROUND");
   current_index = 0;
   random_spot = [
@@ -126,19 +137,16 @@ function start_next_round() {
   patterns.push(random_spot);
   disable_buttons();
   flashCells().then(() => {
-
     enable_buttons();
   });
 }
 
 function get_cell_color(row, column) {
-  if (row % 2 == 0 && column % 2 == 0 || row % 2 == 1 && column % 2 == 1) {
-    return "#d3d3d3"
+  if ((row % 2 == 0 && column % 2 == 0) || (row % 2 == 1 && column % 2 == 1)) {
+    return "#d3d3d3";
   }
 
-  return "#fff"
-  
-
+  return "#fff";
 }
 
 async function flash_cell(row, column, color = "lime") {
@@ -156,8 +164,7 @@ async function flash_cell(row, column, color = "lime") {
   return sleep(1).then(() => {
     cell_button.style.background = default_bg;
 
-    return sleep(1).then(() => {
-    });
+    return sleep(1).then(() => {});
   });
 }
 

@@ -19,6 +19,13 @@
 #player {
   position:absolute;
   background: lime;
-  transition: all .5s ease-out;
+  /*transition: all 2s ease-out;*/
+  z-index: -1;
+}
+
+.enemy {
+  position:absolute;
+  background: red;
+  transition: all 3s linear;
   z-index: -1;
 }
